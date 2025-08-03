@@ -83,6 +83,7 @@ npm init -y
 npm install --save-dev hardhat
 ```
 
+
 ### 创建Hardhat工程结构
 
 ```bash
@@ -277,3 +278,94 @@ npx hardhat run scripts/deploy.js --network goerli
 ```
 
 部署成功后，可以在[Etherscan](https://goerli.etherscan.io/)上通过输出的合约地址查看合约信息。
+
+
+## Yarn 命令版本
+
+可以选择使用yarn来替换npm
+
+### 解决 Yarn 速度慢的问题
+```bash
+# 查看当前镜像源
+yarn config get registry
+
+# 永久切换到淘宝镜像
+yarn config set registry https://registry.npmmirror.com
+
+# 验证设置是否成功
+yarn config get registry
+```
+
+### 使用 nrm 管理镜像源（Yarn 兼容）
+```bash
+# 全局安装 nrm（Yarn 方式）
+yarn global add nrm
+
+# 查看可用镜像源
+nrm ls
+
+# 切换到淘宝镜像
+nrm use taobao
+```
+
+
+## 创建 Hardhat 项目
+
+### 初始化项目
+```bash
+# 创建项目文件夹并进入
+mkdir hardhat-demo && cd hardhat-demo
+
+# 初始化 Yarn 项目
+yarn init -y
+
+# 安装 Hardhat（开发依赖）
+yarn add --dev hardhat
+```
+
+### 创建 Hardhat 工程结构
+```bash
+# 运行 Hardhat 初始化命令（与 npm 通用）
+npx hardhat
+```
+
+### 安装必要依赖
+```bash
+# 安装以太坊相关库（开发依赖）
+yarn add --dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai
+
+# 安装 dotenv（生产依赖）
+yarn add dotenv
+```
+
+
+## 编译和部署合约
+
+### 编译合约
+```bash
+# 使用 Yarn 调用 Hardhat 编译
+yarn hardhat compile
+```
+
+### 在本地测试网部署
+```bash
+yarn hardhat run scripts/deploy.js --network hardhat
+```
+
+### 与本地合约交互
+```bash
+yarn hardhat run scripts/interact.js --network hardhat
+```
+
+### 在测试网部署（可选）
+```bash
+yarn hardhat run scripts/deploy.js --network goerli
+```
+
+
+### 说明
+- 所有 `npx hardhat` 命令均可替换为 `yarn hardhat`，功能完全一致
+- Yarn 会生成 `yarn.lock` 文件替代 npm 的 `package-lock.json`，两者作用相同（锁定依赖版本）
+- 其他操作（如编写合约、配置文件等）与 npm 版本完全一致，无需修改
+
+使用时只需保持工具统一（全程用 Yarn 或全程用 npm），避免混用导致依赖冲突即可。
