@@ -308,10 +308,7 @@ nrm ls
 nrm use taobao
 ```
 
-
-## 创建 Hardhat 项目
-
-### 初始化项目
+### 初始化Hardhat项目
 ```bash
 # 创建项目文件夹并进入
 mkdir hardhat-demo && cd hardhat-demo
