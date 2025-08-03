@@ -7,7 +7,7 @@ date: 2025-08-03 13:23 +0800
 
 在区块链开发中，部署和测试智能合约是核心环节。本文将详细介绍如何使用VSCode作为开发环境，结合Hardhat框架来部署一个简单的智能合约，并通过JavaScript脚本与合约进行交互。同时，我们也会解决国内用户常见的npm命令速度慢的问题。
 
-## 准备工作
+## 一、准备工作
 
 ### 环境要求
 
@@ -103,7 +103,7 @@ npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffl
 npm install dotenv --save
 ```
 
-## 编写智能合约
+## 二、编写智能合约
 
 在项目根目录创建`contracts`文件夹，然后在该文件夹下创建`Greeter.sol`文件：
 
@@ -130,7 +130,7 @@ contract Greeter {
 
 这是一个简单的合约，包含一个存储字符串的变量和两个函数：`greet()`用于获取字符串，`setGreeting()`用于设置字符串。
 
-## 配置Hardhat
+## 三、配置Hardhat
 
 修改`hardhat.config.js`文件：
 
@@ -165,7 +165,7 @@ INFURA_API_KEY=你的Infura API密钥
 
 > 注意：不要将`.env`文件提交到版本控制系统，在`.gitignore`中添加`.env`
 
-## 创建部署脚本
+## 四、创建部署脚本
 
 在项目根目录创建`scripts`文件夹，然后创建`deploy.js`文件：
 
@@ -194,7 +194,7 @@ main()
   });
 ```
 
-## 创建交互脚本
+## 五、创建交互脚本
 
 在`scripts`文件夹下创建`interact.js`文件：
 
@@ -231,7 +231,7 @@ main()
   });
 ```
 
-## 编译和部署合约
+## 六、编译和部署合约
 
 ### 编译合约
 
@@ -280,7 +280,7 @@ npx hardhat run scripts/deploy.js --network goerli
 部署成功后，可以在[Etherscan](https://goerli.etherscan.io/)上通过输出的合约地址查看合约信息。
 
 
-## Yarn 命令版本
+## 七、Yarn 命令版本
 
 可以选择使用yarn来替换npm
 
@@ -337,9 +337,6 @@ yarn add --dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethere
 # 安装 dotenv（生产依赖）
 yarn add dotenv
 ```
-
-
-## 编译和部署合约
 
 ### 编译合约
 ```bash
